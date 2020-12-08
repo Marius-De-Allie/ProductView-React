@@ -7,13 +7,13 @@ const FAIL_FETCH_PROD = 'FAIL_FETCH_PROD';
 
 // Successfully fetched product details action creator.
 const successFetchProd = (productObj) => ({
-  type: SUCCESS_FETCH_PRODS,
+  type: SUCCESS_FETCH_PROD,
   product: productObj
 });
 
 // Failue on product details fetch action creator.
 const failureFetchProd = (error) => ({
-  type: FAIL_FETCH_PRODS,
+  type: FAIL_FETCH_PROD,
   error
 });
 
