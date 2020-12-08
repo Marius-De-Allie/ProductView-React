@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ProductImage from './ProductImage';
 import handlefetchProduct from '../redux/actions/product';
 
 const ProductDetails = (props) => {
@@ -24,12 +25,13 @@ const ProductDetails = (props) => {
           <div className="prod-details">
             <section classnalme="primary-details">
               <h2>{name}</h2>
-              <div className="image">
-                <img src={imgUrl} alt={`${name} by ${manufacturer}`} />
-              </div>
+              <ProductImage imgUrl={imgUrl} name={name} manufacturer={manufacturer} />
+              
               <div className="quantity-container" style={{display: 'flex', flexDirection: 'column'}}>
                 <div className="size-btns">
-                  {size.map((size) => <button>{size}</button>)}
+                  {size.map((size) => 
+                    <button key={size}>{size}</button>)
+                  }
                 </div>
                 <div>
                   <label htmlFor="quantity">
