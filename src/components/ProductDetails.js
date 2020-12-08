@@ -2,31 +2,51 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import handlefetchProduct from '../redux/actions/product';
 
-const ProductDetails = () => {
+const ProductDetails = (props) => {
+
   const dispatch = useDispatch();
-  // Retrieve  product peice of redux store state.
-  const product = useSelector((state) => state.product);
+  const product = useSelector(({ product }) => product);
 
   // Fetch product details when component is mounted.
   useEffect(() => {
     // dispatch handlefetchProduct thunk action.
     dispatch(handlefetchProduct());
   }, [dispatch]);
-
+ 
   // destructure product object's properties.
-  // const { name, imgUrl, size, price, manufacturer } = product;
-
+  if(product !== null) {
+    var { name, imgUrl, size, price, manufacturer } = product;
+  };
+  console.log(props)
   return (
     <React.Fragment>
-      {!product ? <p>loading...</p> :
+      {product === null ? <p>loading...</p> :
           <div className="prod-details">
             <section classnalme="primary-details">
+              <h2>{name}</h2>
               <div className="image">
-                <img src="" alt="" />
+                <img src={imgUrl} alt={`${name} by ${manufacturer}`} />
               </div>
-              <p>price per unit</p>
-              <p>Total price</p>
-              <p>size</p>
+              <div className="quantity-container" style={{display: 'flex', flexDirection: 'column'}}>
+                <div className="size-btns">
+                  {size.map((size) => <button>{size}</button>)}
+                </div>
+                <div>
+                  <label htmlFor="quantity">
+                    Quantity
+                  </label>
+                  <input 
+                    id="quantity"
+                    type="number"
+                    min="1"
+                    max="100"
+                  />
+                </div>
+              </div>
+              <div className="price-container" style={{display: 'flex', flexDirection: 'column'}}>
+                <p>price per unit: ${price.toFixed(2)}</p>
+                <p>Total price: ${price.toFixed(2)}</p>
+              </div>
               <p>Image list placeHolder</p>
             </section>
             <section classnalme="sec-details">
@@ -38,9 +58,6 @@ const ProductDetails = () => {
       }
     </React.Fragment>
   )
-    
-    
-  
 };
 
 export default ProductDetails;
