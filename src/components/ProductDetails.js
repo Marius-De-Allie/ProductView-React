@@ -3,13 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import ProductImage from './ProductImage';
 import handlefetchProduct from '../redux/actions/product';
 
+// TODO review quantity input element validation.
+
 const ProductDetails = (props) => {
   const dispatch = useDispatch();
   // retrieve product piece of state from redux store.
   const product = useSelector(({ product }) => product);
-
   // local state to manage product quantity selected by user.
   const [quantity, setQuantity] = useState(1);
+
+  // Handle quantity change.
+  const onQuantityChange = (evt) => {
+    const value = evt.target.value;
+    // Set quantity peice of state to input element's current value.
+    setQuantity(value);
+    console.log(evt.target.value);
+  };
 
   // Fetch product details when component is mounted.
   useEffect(() => {
@@ -46,8 +55,9 @@ const ProductDetails = (props) => {
                     min="1"
                     max="100"
                     value={quantity}
-                    onChange={() => console.log('quantity changed')}
+                    onChange={onQuantityChange}
                   />
+                  {((quantity < 1) || (quantity > 100)) && <p style={{color: 'red'}}>Please enter a valid quantity between 1 and 100</p>}
                 </div>
               </div>
               <div className="price-container" style={{display: 'flex', flexDirection: 'column'}}>
