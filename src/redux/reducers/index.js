@@ -1,4 +1,4 @@
-import { combineReducers } from 'react-redux';
+import { combineReducers } from 'redux';
 import product from './product';
 
 // Combine redux reducers into single root reducer.
