@@ -1,14 +1,18 @@
 import React, { useEffect } from 'react';
-import handleFetchProduct from '../redux/actions/product';
+import { useDispatch } from 'react-redux';
+import handlefetchProduct from '../redux/actions/product';
 
 const ProductDetails = () => {
+  const dispatch = useDispatch();
 
   // Fetch product details when component is mounted.
   useEffect(() => {
-    console.log('fetch product!');
-  }, []);
+    // dispatch handlefetchProduct thunk action.
+    dispatch(handlefetchProduct());
+  }, [dispatch]);
   
   return (
+    
     <div className="prod-details">
       <section classnalme="primary-details">
         <div className="image">
