@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductImage from './ProductImage';
 import handlefetchProduct from '../redux/actions/product';
 
 const ProductDetails = (props) => {
-
   const dispatch = useDispatch();
+  // retrieve product piece of state from redux store.
   const product = useSelector(({ product }) => product);
+
+  // local state to manage product quantity selected by user.
+  const [quantity, setQuantity] = useState(1);
 
   // Fetch product details when component is mounted.
   useEffect(() => {
@@ -42,6 +45,8 @@ const ProductDetails = (props) => {
                     type="number"
                     min="1"
                     max="100"
+                    value={quantity}
+                    onChange={() => console.log('quantity changed')}
                   />
                 </div>
               </div>
