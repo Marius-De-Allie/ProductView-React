@@ -13,7 +13,7 @@ const ProductDetails = (props) => {
   // local state to manage product quantity selected by user.
   const [quantity, setQuantity] = useState(1);
   // local state to manage product size selected by user.
-  const [prodSize, setprodSize] = useState(product.size[0]);
+  const [prodSize, setprodSize] = useState(null);
 
   // Handle quantity change.
   const onQuantityChange = (evt) => {
@@ -21,6 +21,12 @@ const ProductDetails = (props) => {
     // Set quantity peice of state to input element's current value.
     setQuantity(value);
     console.log(evt.target.value);
+  };
+
+  // Handle size change.
+  const onSizeChange = (selectedSize) => {
+    console.log(selectedSize);
+    setprodSize(selectedSize);
   };
 
   // Fetch product details when component is mounted.
@@ -47,6 +53,8 @@ const ProductDetails = (props) => {
                   {size.map((size) => 
                     <button 
                       key={size}
+                      onClick={() => onSizeChange(size)}
+                      className={size === prodSize ? 'selected' : ''}
                     >
                       {size}
                     </button>)
@@ -89,7 +97,5 @@ const ProductDetails = (props) => {
     </React.Fragment>
   )
 };
-
-// onClick={() => console.log(size)}
 
 export default ProductDetails;
