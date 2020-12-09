@@ -7,11 +7,14 @@ import addToCart from '../redux/actions/cart';
 
 // TODO review quantity input element validation.
 // TODO add some validation for product size before adding to cart.
+// TODO update error message.
 
 const ProductDetails = (props) => {
   const dispatch = useDispatch();
   // retrieve product piece of state from redux store.
-  const product = useSelector(({ product }) => product);
+  const product = useSelector((state) => state.product);
+  // Retrieve error piece of state from redux store.
+  const error = useSelector((state) => state.error);
   // local state to manage product quantity selected by user.
   const [quantity, setQuantity] = useState(1);
   // local state to manage product size selected by user.
@@ -60,6 +63,9 @@ const ProductDetails = (props) => {
     var { name, imgUrl, size, price, manufacturer } = product;
   };
   console.log(props)
+  // If error peice of redux store state is not null render error message.
+  if(error !== null) return <p>{error}</p>
+
   return (
     <React.Fragment>
       {product === null ? <p>loading...</p> :
