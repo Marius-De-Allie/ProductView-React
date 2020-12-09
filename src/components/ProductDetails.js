@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FaCartPlus } from 'react-icons/fa';
 import ProductImage from './ProductImage';
 import handlefetchProduct from '../redux/actions/product';
 
@@ -64,7 +65,13 @@ const ProductDetails = (props) => {
                 <p>price per unit: ${price.toFixed(2)}</p>
                 <p>Total price: ${price.toFixed(2)}</p>
               </div>
-              <p>Image list placeHolder</p>
+              <button 
+                className="cart-btn"
+                disabled={quantity < 1 || quantity > 100}
+              >
+                {`Add to Cart `}
+                <FaCartPlus />
+              </button>
             </section>
             <section classnalme="sec-details">
               description
