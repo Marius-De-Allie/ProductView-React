@@ -39,5 +39,7 @@ const handlefetchProd = () => {
 export { 
   SUCCESS_FETCH_PROD,
   FAIL_FETCH_PROD,
-  handlefetchProd as default
+  handlefetchProd as default,
+  successFetchProd,
+  failureFetchProd
 };

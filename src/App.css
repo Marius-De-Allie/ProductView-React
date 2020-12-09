@@ -37,7 +37,143 @@
   }
 }
 
+.prod-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* align-items: stretch; */
+  /* border: 1px solid red; */
+  max-width: 900px;
+  margin: 2rem auto;
+  /* background-color: #fff; */
+  height: 100%;
+}
 
-.selected {
-  color: #F2711C;
+button {
+  outline: none;
+}
+
+.upper-details {
+  width: 533px;
+}
+
+.upper-details h2 {
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.size-hint {
+  color: red;
+  text-align: left;
+  font-weight: 10px;
+}
+
+/* Active size button styling. */
+.selected-size {
+  background-color: #FF7701 !important;
+  color: #fff !important
+}
+.price-container {
+  display: flex;
+  /* flex-direction: row; */
+  margin-top: 1rem;
+  justify-content: space-between;
+}
+
+.total {
+  font-weight: bold;
+}
+
+/* Lower details styling. */
+
+.lower-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+
+}
+
+.lower-btn-container {
+  align-self: flex-start;
+}
+
+.prod-text {
+  padding: 1rem;
+  text-align: left;
+}
+
+.lower-btns {
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  padding: 15px 5px;
+  font-weight: bold;
+  
+}
+
+.lower-btns:hover {
+  color: orange;
+}
+
+.sec-imgs-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sec-imgs {
+  margin: 1rem 0.5rem;
+  cursor: pointer
+}
+
+.sec-imgs img {
+  width: 150px;
+}
+
+.img-btns {
+  border: none;
+  background-color: #fff;
+  padding: 0;
+  outline: none;
+}
+
+.img-arrows {
+  cursor: pointer;
+}
+.img-arrows:hover {
+  color: #FF7701;
+}
+
+.review-header {
+  text-align: left;
+}
+
+/* Media queries */
+
+@media (max-width: 768px) {
+  div.ui.segment {
+    /* max-width: none !important; */
+    max-width: 80% !important; 
+    margin: 0 auto;
+
+  }
+
+  .prod-details {
+    max-width: 100% !important; 
+    margin: 0;
+
+  }
+
+  .lower-detailsdiv.ui.segment {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .upper-details {
+    width: 100% !important;
+  }
+
+  .image-container img {
+    width: 100%;
+  }
+
 }

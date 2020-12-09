@@ -1,4 +1,4 @@
-import {   SUCCESS_FETCH_PROD } from '../actions/product'; // input action types.
+import { SUCCESS_FETCH_PROD } from '../actions/product'; // input action types.
 
 // Product Reducer.
 const product = (state = null, action) => {
