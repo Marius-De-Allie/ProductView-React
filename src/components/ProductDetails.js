@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaCartPlus } from 'react-icons/fa';
 import ProductImage from './ProductImage';
 import handlefetchProduct from '../redux/actions/product';
+import addToCart from '../redux/actions/cart';
 
 // TODO review quantity input element validation.
 // TODO add some validation for product size before adding to cart.
@@ -16,6 +17,13 @@ const ProductDetails = (props) => {
   // local state to manage product size selected by user.
   const [prodSize, setprodSize] = useState(null);
 
+  // Fetch product details when component is mounted.
+  useEffect(() => {
+    // dispatch handlefetchProduct thunk action.
+    dispatch(handlefetchProduct());
+  }, [dispatch]);
+
+  
   // Handle quantity change.
   const onQuantityChange = (evt) => {
     const value = evt.target.value;
@@ -30,11 +38,22 @@ const ProductDetails = (props) => {
     setprodSize(selectedSize);
   };
 
-  // Fetch product details when component is mounted.
-  useEffect(() => {
-    // dispatch handlefetchProduct thunk action.
-    dispatch(handlefetchProduct());
-  }, [dispatch]);
+  // Handle addToCart btn click.
+  const onCartClick = () => {
+    // destructure required properties of product oject.
+    const { name, imgUrl, size, price } = product;
+    // Create cart obj.
+    const cartObj = {
+      name, 
+      imgUrl, 
+      size, 
+      price,
+      quantity,
+      total: price * quantity,
+    }
+    // dispatch ADD_TO_CART action, passing in cart object..
+    dispatch(addToCart(cartObj));
+  };
  
   // destructure product object's properties.
   if(product !== null) {
@@ -83,6 +102,7 @@ const ProductDetails = (props) => {
               <button 
                 className="cart-btn"
                 disabled={quantity < 1 || quantity > 100}
+                onClick={onCartClick}
               >
                 {`Add to Cart `}
                 <FaCartPlus />
