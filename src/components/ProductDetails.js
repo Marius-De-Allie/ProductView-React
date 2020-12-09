@@ -63,7 +63,7 @@ const ProductDetails = (props) => {
               </div>
               <div className="price-container" style={{display: 'flex', flexDirection: 'column'}}>
                 <p>price per unit: ${price.toFixed(2)}</p>
-                <p>Total price: ${price.toFixed(2)}</p>
+                <p>Total price: ${(price * quantity).toFixed(2)}</p>
               </div>
               <button 
                 className="cart-btn"
