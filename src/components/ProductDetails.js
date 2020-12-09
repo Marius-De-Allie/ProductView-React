@@ -12,6 +12,8 @@ const ProductDetails = (props) => {
   const product = useSelector(({ product }) => product);
   // local state to manage product quantity selected by user.
   const [quantity, setQuantity] = useState(1);
+  // local state to manage product size selected by user.
+  const [prodSize, setprodSize] = useState(product.size[0]);
 
   // Handle quantity change.
   const onQuantityChange = (evt) => {
@@ -43,7 +45,11 @@ const ProductDetails = (props) => {
               <div className="quantity-container" style={{display: 'flex', flexDirection: 'column'}}>
                 <div className="size-btns">
                   {size.map((size) => 
-                    <button key={size}>{size}</button>)
+                    <button 
+                      key={size}
+                    >
+                      {size}
+                    </button>)
                   }
                 </div>
                 <div>
@@ -83,5 +89,7 @@ const ProductDetails = (props) => {
     </React.Fragment>
   )
 };
+
+// onClick={() => console.log(size)}
 
 export default ProductDetails;
