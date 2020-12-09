@@ -5,6 +5,7 @@ import ProductImage from './ProductImage';
 import handlefetchProduct from '../redux/actions/product';
 
 // TODO review quantity input element validation.
+// TODO add some validation for product size before adding to cart.
 
 const ProductDetails = (props) => {
   const dispatch = useDispatch();
